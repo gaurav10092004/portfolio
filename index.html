@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfoloio-gauravkumar</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #6366f1;
+            --secondary-color: #8b5cf6;
+            --accent-color: #22d3ee;
+        }
+        html, body {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body {
+            background-color: #0f172a;
+            color: #e2e8f0;
+        }
+        .hero-gradient {
+            background: linear-gradient(135deg, rgba(99,102,241,0.8), rgba(139,92,246,0.8)), 
+                        url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23718096' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+        }
+        .glowing-border {
+            animation: border-pulse 3s infinite;
+        }
+        @keyframes border-pulse {
+            0%, 100% { box-shadow: 0 0 10px rgba(99,102,241,0.5); }
+            50% { box-shadow: 0 0 20px rgba(99,102,241,0.8); }
+        }
+        .skill-card {
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform-style: preserve-3d;
+        }
+        .skill-card:hover {
+            transform: scale(1.05) rotateY(15deg);
+        }
+        .project-card {
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .project-card-inner {
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+        .project-card:hover .project-card-inner {
+            transform: rotateY(180deg);
+        }
+        .project-card-front,
+        .project-card-back {
+            backface-visibility: hidden;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .project-card-back {
+            transform: rotateY(180deg);
+        }
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+    </style>
+</head>
+<body class="bg-gray-900">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-800 bg-opacity-90 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="text-2xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                GAURAV_K
+
+            </div>
+            <div class="hidden md:flex space-x-6 items-center">
+                <a href="#home" class="text-gray-300 hover:text-purple-400 transition duration-300">Home</a>
+                <a href="#about" class="text-gray-300 hover:text-purple-400 transition duration-300">About</a>
+                <a href="#skills" class="text-gray-300 hover:text-purple-400 transition duration-300">Skills</a>
+                <a href="#projects" class="text-gray-300 hover:text-purple-400 transition duration-300">Projects</a>
+                <a href="#contact" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-4 py-2 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                    Contact
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="relative hero-gradient min-h-screen flex items-center justify-center text-white">
+        <div class="container mx-auto px-6 md:flex items-center">
+            <div class="md:w-1/2 text-center md:text-left z-10">
+                <h1 class="text-5xl md:text-6xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                    Hi, I'm <span>GAURAV KUMAR</span>
+                </h1>
+                <p id="typed-output" class="text-3xl mb-8 h-16 text-cyan-300">
+                    <!-- Typed text will be inserted here -->
+                </p>
+                <div class="flex space-x-4 justify-center md:justify-start">
+                    <a href="#contact" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300 transform hover:scale-105">
+                        Hire Me
+                    </a>
+                    <a href="#projects" class="border-2 border-cyan-400 text-cyan-400 px-6 py-3 rounded-full hover:bg-cyan-400 hover:text-gray-900 transition duration-300 transform hover:scale-105">
+                        View Projects
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-full mt-12 md:mt-0 flex justify-center relative">
+                <div class="w-80 h-80 rounded-full border-4 border-purple-500 shadow-xl relative z-0 glowing-ring">
+                    
+                    <!-- Profile Image with Clean Visibility and Animation -->
+                    <img src="hero.jpg"
+                         alt="Profile"
+                         class="animated-image">
+                </div>
+            </div>
+            
+            <!-- CSS Animation Styles -->
+            <style>
+                .glowing-ring {
+                    animation: glow 3s infinite alternate;
+                    box-shadow: 0 0 20px rgba(139, 92, 246, 0.6), 0 0 40px rgba(139, 92, 246, 0.4);
+                }
+            
+                .animated-image {
+                    width: 320px;
+                    height: 320px;
+                    object-fit: cover;
+                    position: absolute;
+                    top: 50%;
+                    left: 50%;
+                    transform: translate(-50%, -50%);
+                    border-radius: 50%;
+                    border: 5px solid #fff;
+                    box-shadow: 0 8px 24px rgba(99, 102, 241, 0.5);
+                    animation: float 6s ease-in-out infinite;
+                }
+            
+                /* Floating Effect */
+                @keyframes float {
+                    0% { transform: translate(-50%, -52%); }
+                    50% { transform: translate(-50%, -48%); }
+                    100% { transform: translate(-50%, -52%); }
+                }
+            
+                /* Rotation Effect */
+                
+            
+                /* Glowing Effect */
+                @keyframes glow {
+                    0% {
+                        box-shadow: 0 0 15px rgba(139, 92, 246, 0.6), 
+                                    0 0 30px rgba(139, 92, 246, 0.4);
+                    }
+                    100% {
+                        box-shadow: 0 0 30px rgba(139, 92, 246, 0.8), 
+                                    0 0 50px rgba(139, 92, 246, 0.6);
+                    }
+                }
+            </style>
+            
+            
+
+
+                <div class="absolute top-0 right-0 w-32 h-32 bg-purple-500 bg-opacity-20 rounded-full blur-2xl animate-pulse"></div>
+                <div class="absolute bottom-0 left-0 w-32 h-32 bg-cyan-500 bg-opacity-20 rounded-full blur-2xl animate-pulse"></div>
+            </div>
+        </div>
+        <div class="absolute bottom-0 left-0 right-0 h-16 bg-gray-900 opacity-90"></div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="bg-gray-900 py-24">
+        <div class="container mx-auto px-6 md:flex items-center">
+            <div class="md:w-1/2 mb-12 md:mb-0">
+                <div class="bg-gray-800 p-8 rounded-2xl shadow-2xl border border-purple-500 border-opacity-30">
+                    <h2 class="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">About Me</h2>
+                    <p class="text-gray-300 leading-relaxed mb-6">
+                        I am Gaurav Kumar, a 3rd-year B.Tech Computer Science Engineering student at UPES, Dehradun. With a strong academic foundation in computer science and an unwavering passion for technology, I have honed my skills in web development, backend integration, and dynamic digital solutions.
+
+My expertise lies in creating responsive, user-centric web applications using modern frameworks and technologies. I excel in backend development, ensuring seamless data management, API integration, and optimized server-side performance. Additionally, I have experience in database design, cloud services, and version control systems, enabling me to deliver scalable and efficient solutions.
+
+I am a fast learner who thrives in challenging environments, constantly exploring new technologies and implementing them in real-world projects. Whether it's building interactive websites, enhancing user experience, or solving complex technical problems, I am dedicated to delivering impactful results through innovative solutions
+                    </p>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400">03+</h3>
+                            <p class="text-gray-400">Years of Experience</p>
+                        </div>
+                        <div>
+                            <h3 class="text-3xl font-bold text-cyan-400">06+</h3>
+                            <p class="text-gray-400">Completed Projects</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="md:w-1/2 md:pl-12">
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-gray-800 p-6 rounded-2xl text-center skill-card border border-purple-500 border-opacity-30">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                        </svg>
+                        <h4 class="font-bold text-lg text-cyan-300">Web Development</h4>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-2xl text-center skill-card border border-purple-500 border-opacity-30">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
+                        </svg>
+                        <h4 class="font-bold text-lg text-cyan-300">UI/UX Design</h4>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-2xl text-center skill-card border border-purple-500 border-opacity-30">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a1 1 0 01-1-1V7a1 1 0 011-1h1a2 2 0 100-4H4a1 1 0 01-1-1V4a1 1 0 011-1h4a1 1 0 011 1v1z"></path>
+                        </svg>
+                        <h4 class="font-bold text-lg text-cyan-300">Problem Solving</h4>
+                    </div>
+                    <div class="bg-gray-800 p-6 rounded-2xl text-center skill-card border border-purple-500 border-opacity-30">
+                        <svg class="w-16 h-16 mx-auto mb-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 01-4.347-4.347l-.477-2.387a2 2 0 00-.547-1.022L5.94 4.521a2 2 0 00-2.81.014L2 6.828c0 7.362 5.81 13.172 13.172 13.172l1.485-1.129a2 2 0 00.014-2.81l-1.994-1.662z"></path>
+                        </svg>
+                        <h4 class="font-bold text-lg text-cyan-300">Creative Design</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects" class="bg-gray-900 py-24">
+        <div class="container mx-auto px-6">
+            <h2 class="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                My Projects
+            </h2>
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="project-card h-96">
+                    <div class="project-card-inner w-full h-full">
+                        <div class="project-card-front bg-gray-800 rounded-2xl overflow-hidden">
+                            <img src="https://coursevania.com/wp-content/uploads/2023/02/5021180_dbc8_2.jpg" alt="Project 1" class="w-full h-full object-cover">
+                        </div>
+                        <div class="project-card-back bg-gray-800 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-cyan-300">Streamlit Spiral Visualization App</h3>
+                            <p class="text-gray-400 mb-6">A collection of containerized experiments, mastering Docker for scalability.</p>
+                            <a href="https://dockerexperiments-uekoll3b3g7pecgudketkb.streamlit.app/" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card h-96">
+                    <div class="project-card-inner w-full h-full">
+                        <div class="project-card-front bg-gray-800 rounded-2xl overflow-hidden">
+                            <img src="https://uploads-ssl.webflow.com/6266b595eef18c96eef938e2/62b245d0f032adaa18124084_evidently_ai_logo_fi.png" alt="Project 2" class="w-full h-full object-cover">
+                        </div>
+                        <div class="project-card-back bg-gray-800 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-cyan-300">ML Model with Evidently</h3>
+                            <p class="text-gray-400 mb-6">A Streamlit ML app for model training, predictions, and explainability using Evidently AI and SHAP.</p>
+                            <a href="https://dockerexperiments-7bslhb4defbakiiqcyxhkg.streamlit.app/" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card h-96">
+                    <div class="project-card-inner w-full h-full">
+                        <div class="project-card-front bg-gray-800 rounded-2xl overflow-hidden">
+                            <img src="https://th.bing.com/th/id/OIP._E_DIOoRQVfzwdaXSUzVtwHaFj?rs=1&pid=ImgDetMain" alt="Project 3" class="w-full h-full object-cover">
+                        </div>
+                        <div class="project-card-back bg-gray-800 rounded-2xl p-6 flex flex-col justify-center items-center text-center">
+                            <h3 class="text-2xl font-bold mb-4 text-cyan-300"> Binary Classification WebApp</h3>
+                            <p class="text-gray-400 mb-6">This interactive Streamlit web app provides a seamless experience for data exploration and visualization.</p>
+                            <a href="https://dockerexperiments-3ecmmrp9jwg7vuwzb6kygc.streamlit.app/" class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-6 py-3 rounded-full hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                                View Project
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="bg-gray-900 py-24">
+        <div class="container mx-auto px-6">
+            <div class="max-w-xl mx-auto bg-gray-800 rounded-2xl p-8 shadow-2xl border border-purple-500 border-opacity-30">
+                <h2 class="text-4xl font-bold text-center mb-12 text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-600">
+                    Contact Me
+                </h2>
+                <form>
+                    <div class="mb-6">
+                        <label class="block text-gray-300 font-bold mb-2" for="name">Name</label>
+                        <input type="text" id="name" class="w-full px-4 py-3 rounded-lg bg-gray-700 border-2 border-purple-500 border-opacity-30 focus:outline-none focus:border-cyan-400 text-white">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-300 font-bold mb-2" for="email">Email</label>
+                        <input type="email" id="email" class="w-full px-4 py-3 rounded-lg bg-gray-700 border-2 border-purple-500 border-opacity-30 focus:outline-none focus:border-cyan-400 text-white">
+                    </div>
+                    <div class="mb-6">
+                        <label class="block text-gray-300 font-bold mb-2" for="message">Message</label>
+                        <textarea id="message" rows="4" class="w-full px-4 py-3 rounded-lg bg-gray-700 border-2 border-purple-500 border-opacity-30 focus:outline-none focus:border-cyan-400 text-white"></textarea>
+                    </div>
+                    <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-pink-500 text-white py-3 rounded-lg hover:from-purple-600 hover:to-pink-600 transition duration-300">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto text-center">
+            <div class="flex justify-center space-x-6 mb-6">
+                <a href="https://www.instagram.com/himanshu.s20" class="text-gray-400 hover:text-purple-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 16h-2v-6h2v6zm-1-6.891c-.607 0-1.1-.496-1.1-1.109 0-.612.492-1.109 1.1-1.109s1.1.497 1.1 1.109c0 .613-.492 1.109-1.1 1.109zm8 6.891h-1.998v-2.861c0-1.881-2.002-1.722-2.002 0v2.861h-2v-6h2v1.093c.872-1.616 4-1.736 4 1.548v3.359z"/></svg>
+                </a>
+                <a href="https://github.com/Himanshu5619" class="text-gray-400 hover:text-purple-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                </a>
+                <a href="https://www.linkedin.com/in/himanshu-singh-b3aa71218/" class="text-gray-400 hover:text-purple-400 transition duration-300">
+                    <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.784 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+            </div>
+            <p class="text-gray-400">&copy; 2004 Gaurav Kumar.   All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Typed text effect
+        const texts = [
+            'Full Stack Developer',
+            'Creative Designer',
+            'Problem Solver'
+        ];
+        let count = 0;
+        let index = 0;
+        let currentText = '';
+        let letter = '';
+
+        function type() {
+            if (count === texts.length) count = 0;
+            currentText = texts[count];
+            letter = currentText.slice(0, ++index);
+            
+            document.getElementById('typed-output').textContent = letter;
+            
+            if (letter.length === currentText.length) {
+                count++;
+                index = 0;
+                setTimeout(() => {
+                    document.getElementById('typed-output').textContent = '';
+                    type();
+                }, 2000);
+            } else {
+                setTimeout(type, 100);
+            }
+        }
+
+        // Start typing effect
+        type();
+    </script>
+</body>
+</html>s
+
